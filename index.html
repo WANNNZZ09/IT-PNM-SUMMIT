@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrasi Seminar Teknologi</title>
+    
+    <!-- Menggunakan Bootstrap untuk layout responsif -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    
+    <!-- Menggunakan font Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script defer src="script.js"></script>
+
+    <!-- css custom -->
+    <style>
+        .header {
+            position: fixed;
+        }
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+        }
+        .container {
+            width: auto;
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            font-weight: normal;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-primary text-white py-3 d-flex align-items-center">
+        <!-- Logo -->
+        <a href="index.html" onclick="location.reload();" class="d-flex align-items-center text-white text-decoration-none">
+            <img src="download (6)-Photoroom.png" alt="Logo" class="me-3" style="height: 80px;">
+            <div>
+                <h1 class="h4 mb-0">IT PNM Summit</h1>
+                <p class="mb-0">Registrasi Seminar Teknologi Nasional</p>
+            </div>
+        </a>
+    </header>
+
+    <!-- Bagian utama dengan grid system Bootstrap -->
+    <main class="container mt-5">
+        <div class="row">
+            <!-- Sidebar informasi seminar -->
+            <aside class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-subtitle mb-2 text-muted">Informasi Seminar</h2>
+                        <p class="card-text">Seminar teknologi nasional yang membahas perkembangan terbaru dalam industri teknologi.</p>
+                        <hr>
+                        <h5 class="card-subtitle mb-2 text-muted">Detail Acara</h5>
+                        <ul class="list-unstyled">
+                            <li><strong>Tanggal:</strong> 21 Maret 2025</li>
+                            <li><strong>Waktu:</strong> 09:00 - Selesai</li>
+                            <li><strong>Lokasi:</strong> Auditorium Politeknik Negeri Madiun Kampus 1</li>
+                        </ul>
+                        <hr>
+                        <h5 class="card-subtitle mb-2 text-muted">Pembicara</h5>
+                        <ul class="list-unstyled">
+                            <li><strong>Dr. Budi, Ph.D</strong> - CEO OneTech</li>
+                            <li><strong>Ahmad, M.T</strong> - Ahli Cybersecurity</li>
+                            <li><strong>Indah, M.Kom</strong> - Ahli Web Development</li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Form registrasi -->
+            <section class="col-md-8">
+                <div class="container">
+                    <h2 class="text-center" style="font-weight: bold;">Registrasi Seminar Teknologi</h2>
+                    <form id="registrationForm">
+                        <!-- Input Nama Lengkap -->
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">Nama Lengkap</label>
+                            <input type="text" id="fullName" class="form-control" required>
+                            <div class="error" id="nameError"></div>
+                        </div>
+                        
+                        <!-- Input Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                            <div class="error" id="emailError"></div>
+                        </div>
+                        
+                        <!-- Input Password dengan Toggle Visibility -->
+                        <div class="mb-3 position-relative">
+                            <label for="password" class="form-label">Password</label>
+                            <div class="input-group">
+                                <input type="password" id="password" class="form-control" required>
+                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">👁️</button>
+                            </div>
+                            <div class="error" id="passwordError"></div>
+                        </div>
+                    
+                        <!-- Input Konfirmasi Password -->
+                        <div class="mb-3 position-relative">
+                            <label for="confirmPassword" class="form-label">Konfirmasi Password</label>
+                            <div class="input-group">
+                                <input type="password" id="confirmPassword" class="form-control" required>
+                                <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">👁️</button>
+                            </div>
+                            <div class="error" id="confirmPasswordError"></div>
+                        </div>
+                        
+                        <!-- Input Tanggal Lahir -->
+                        <div class="mb-3">
+                            <label for="dob" class="form-label">Tanggal Lahir</label>
+                            <input type="date" id="dob" class="form-control" required>
+                            <div class="error" id="dobError"></div>
+                        </div>
+                        
+                        <!-- Input Nomor HP dengan Dropdown Kode Negara -->
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Nomor HP</label>
+                            <div class="input-group">
+                                <select id="countryCode" class="form-select">
+                                    <option value="+62">+62 (Indonesia)</option>
+                                    <option value="+1">+1 (USA)</option>
+                                    <option value="+44">+44 (UK)</option>
+                                </select>
+                                <input type="tel" id="phone" class="form-control" required>
+                            </div>
+                            <div class="error" id="phoneError"></div>
+                        </div>
+                        
+                        <!-- Tombol Submit -->
+                        <button type="submit" id="submitBtn" class="btn btn-primary w-100" disabled>Daftar</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Bagian footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <p>&copy; Ridwan Afriza Listiyono-243307023.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Mengambil referensi elemen-elemen form
+            const form = document.getElementById("registrationForm");
+            const submitBtn = document.getElementById("submitBtn");
+            const fullName = document.getElementById("fullName");
+            const email = document.getElementById("email");
+            const password = document.getElementById("password");
+            const confirmPassword = document.getElementById("confirmPassword");
+            const dob = document.getElementById("dob");
+            const phone = document.getElementById("phone");
+            const togglePassword = document.getElementById("togglePassword");
+            const toggleConfirmPassword = document.getElementById("toggleConfirmPassword");
+    
+            // Fungsi untuk memvalidasi form saat input berubah
+            function validateForm() {
+                let valid = true;
+                document.querySelectorAll(".error").forEach(el => el.innerText = "");
+                
+                // Validasi Nama: Minimal 3 karakter
+                if (fullName.value.length < 3) {
+                    document.getElementById("nameError").innerText = "Nama minimal 3 karakter.";
+                    valid = false;
+                }
+                
+                // Validasi Email: Harus sesuai format email standar
+                if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                    document.getElementById("emailError").innerText = "Format email tidak valid.";
+                    valid = false;
+                }
+                
+                // Validasi Password: Minimal 8 karakter
+                if (password.value.length < 8) {
+                    document.getElementById("passwordError").innerText = "Password minimal 8 karakter.";
+                    valid = false;
+                }
+            
+                // Validasi Konfirmasi Password: Harus sama dengan Password
+                if (password.value !== confirmPassword.value) {
+                    document.getElementById("confirmPasswordError").innerText = "Konfirmasi password harus sama.";
+                    valid = false;
+                }
+                
+                // Validasi Tanggal Lahir: Harus sebelum tahun 2006
+                const birthYear = new Date(dob.value).getFullYear();
+                if (birthYear > 2006) {
+                    document.getElementById("dobError").innerText = "Anda harus lahir sebelum 2006.";
+                    valid = false;
+                }
+                
+                // Validasi Nomor HP: Harus terdiri dari 9-12 angka
+                if (!phone.value.match(/^\d{9,12}$/)) {
+                    document.getElementById("phoneError").innerText = "Nomor HP harus terdiri dari 9-12 angka.";
+                    valid = false;
+                }
+                
+                // Mengaktifkan atau menonaktifkan tombol submit berdasarkan validasi
+                submitBtn.disabled = !valid;
+            }
+            
+            // Menjalankan validasi saat ada perubahan pada input
+            form.addEventListener("input", validateForm);
+            
+            // Mencegah form dikirim jika tidak valid dan menampilkan alert jika berhasil
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+                alert("Registrasi berhasil!");
+                form.reset();
+                submitBtn.disabled = true;
+            });
+            
+            // Fitur untuk menampilkan/menghilangkan password dengan tombol
+            togglePassword.addEventListener("click", function () {
+                password.type = password.type === "password" ? "text" : "password";
+            });
+            
+            toggleConfirmPassword.addEventListener("click", function () {
+                confirmPassword.type = confirmPassword.type === "password" ? "text" : "password";
+            });
+        });
+    </script>
+</body>
+</html>
